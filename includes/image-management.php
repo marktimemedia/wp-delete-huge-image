@@ -45,8 +45,8 @@ class Doi_Images {
             
             $sizeOrig = filesize($upload_dir['basedir'].'/'.$data['file']);
             
-            $data = doi_replace_uploaded_image($data); //copy the 'large' image to the 'full' (original) and updates $data array
-//            var_dump($data);
+            $data = doi_replace_uploaded_image($data); //copy the specified image size (originally large) to the 'full' (original) and updates $data array
+            // var_dump($data);
             
             $sizeNew = filesize($upload_dir['basedir'].'/'.$data['file']);
 
@@ -57,13 +57,13 @@ class Doi_Images {
             update_post_meta($image_post->ID, '_wp_attached_file', $data['file']);
             
         
-            echo 'Reduced '.$data['file'].'. Saved: '. round((($sizeOrig-$sizeNew)/1024/1024),2) .' MB <br>';
+            echo 'Reduced '.$data['file'].'. Saved: '. round( ( ( $sizeOrig-$sizeNew )/1024/1024 ),2 ) .' MB <br>'; // this needs to be updated to reflect the custom sizes
             
-            $sumSizes += (($sizeOrig-$sizeNew)/1024/1024);
+            $sumSizes += ( ( $sizeOrig-$sizeNew )/1024/1024 ); // this needs to be updated to reflect the custom sizes
             
 	  }
         
-          echo 'Total space recovered: '.round($sumSizes,2).' MB <br>';
+          echo 'Total space recovered: '.round( $sumSizes,2 ).' MB <br>';
         echo '<hr>';
     }
 
