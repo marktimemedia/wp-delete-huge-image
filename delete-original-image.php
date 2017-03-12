@@ -82,7 +82,7 @@ add_filter("plugin_action_links_$plugin", 'doi_plugin_settings_link' );
   function doi_replace_uploaded_image($image_data) {
 
     // if there is no large image : return
-    if (!isset($image_data['sizes']['large'])) return $image_data;
+    if (!isset($image_data['sizes']['large'])) return $image_data; // replace large with your custom image size
 
     // paths to the uploaded image and the large gallery image
     $upload_dir = wp_upload_dir();
