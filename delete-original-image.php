@@ -1,6 +1,6 @@
 <?php
 /*
-	Plugin Name: Delete Original Image for BEF
+	Plugin Name: Delete Original Image
 	Plugin URI: http://wordpress.org/plugins/delete-original-image
 	Description: This plugin allows you to enable an option to automatically delete the original image after upload. It also has an option to do it for all your previously uploaded images. The plugin will only modify images with 'large' size, copying that large image to replace the original one. 
 	Author: Carlos Minatti, updated by Marktime Media
@@ -82,7 +82,7 @@ add_filter("plugin_action_links_$plugin", 'doi_plugin_settings_link' );
   function doi_replace_uploaded_image($image_data) {
 
     // if there is no large image : return
-    if (!isset($image_data['sizes']['bef_large_gallery'])) return $image_data;
+    if (!isset($image_data['sizes']['large'])) return $image_data;
 
     // paths to the uploaded image and the large gallery image
     $upload_dir = wp_upload_dir();
